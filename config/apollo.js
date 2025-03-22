@@ -1,27 +1,24 @@
-import { ApolloClient, createHttpLink , InMemoryCache } from "@apollo/client";
-import { setContext } from "apollo-link-context";
+import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context"; // ✅ Usa esto
 
 const httpLink = createHttpLink({
-    uri: "https://landinggraphql.onrender.com", // Reemplaza con tu endpoint de GraphQL
+    uri: "https://landinggraphql.onrender.com", 
 });
 
 const authLink = setContext((_, { headers }) => {
-
-    // Leer el storage
-    const token = localStorage.getItem('token');
-
+    const token = localStorage.getItem("token");
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : ''
-        }
-    }
-})
+            authorization: token ? `Bearer ${token}` : "",
+        },
+    };
+});
 
 const client = new ApolloClient({
     connectToDevTools: true,
     cache: new InMemoryCache(),
-    link: authLink.concat( httpLink )
+    link: authLink.concat(httpLink),
 });
 
 export default client;
