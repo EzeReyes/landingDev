@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { ApolloProvider, InMemoryCache, ApolloClient } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql", // Reemplaza con tu endpoint de GraphQL
+  uri: "https://landinggraphql.onrender.com/graphql", // Reemplaza con tu endpoint de GraphQL
   cache: new InMemoryCache(),
 });
 
