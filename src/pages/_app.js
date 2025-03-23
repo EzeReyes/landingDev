@@ -1,12 +1,8 @@
 import "@/styles/globals.css";
+import client from "../../config/apollo";
 
+import { ApolloProvider } from "@apollo/client";
 
-import { ApolloProvider, InMemoryCache, ApolloClient } from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: "https://landinggraphql.onrender.com/graphql", // Reemplaza con tu endpoint de GraphQL
-  cache: new InMemoryCache(),
-});
 
 
 export default function App({ Component, pageProps }) {
